@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { ModalUpdate } from "../../components/Modals/ModalUpdate";
 
 import * as S from "./styles";
 
 export default function Clinics() {
   const [data, setDate] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [updateData, setUpdateData] = useState([]);
 
   useEffect(() => {
     listClinics();
@@ -39,6 +42,15 @@ export default function Clinics() {
       }
       console.log(resp);
     } catch (err) {}
+  }
+
+  function openModal(data) {
+    setModalIsOpen(true);
+    setUpdateData(data);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
   }
 
   return (
@@ -92,10 +104,19 @@ export default function Clinics() {
                 <S.ButtonDelete onClick={() => deleteClinic(index?.id)}>
                   Excluir
                 </S.ButtonDelete>
-                <S.ButtonEdit>Atualizar</S.ButtonEdit>
+                <S.ButtonEdit onClick={() => openModal(index)}>
+                  Atualizar
+                </S.ButtonEdit>
               </S.ContainerBodyItensButtons>
             </S.ContainerBodyItens>
           ))}
+          {modalIsOpen && (
+            <ModalUpdate
+              open={modalIsOpen}
+              closed={closeModal}
+              updateData={updateData}
+            />
+          )}
         </S.ContainerBody>
       )}
     </S.Container>
