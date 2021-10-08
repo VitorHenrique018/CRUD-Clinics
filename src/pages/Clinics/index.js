@@ -19,7 +19,6 @@ export default function Clinics() {
       if (resp.data.length > 0) {
         setDate(resp.data);
       }
-      console.log(resp);
     } catch (err) {}
   }
 
@@ -49,16 +48,16 @@ export default function Clinics() {
       </S.ContainerHeader>
       {data && (
         <S.ContainerBody>
-          {data?.map((index) => (
-            <S.ContainerBodyItens data-aos="fade-up">
+          {data?.map((index, id) => (
+            <S.ContainerBodyItens data-aos="fade-up" key={id}>
               <S.ContainerBodyItensArea data-aos="fade-up">
-                <h3>{index?.name}</h3>
+                <h3>{index?.user?.name}</h3>
                 <span>
-                  <b>CPF:</b> {index?.cpf}
+                  <b>CPF:</b> {index?.user?.cpf}
                 </span>
                 <span>
                   <b> Capital Social: </b>
-                  {index?.valueNumber.toLocaleString("pt-br", {
+                  {index?.user?.capital.toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
                   })}
@@ -67,26 +66,26 @@ export default function Clinics() {
               <S.ContainerBodyItensAddress data-aos="fade-up">
                 <h3>Localidade</h3>
                 <span>
-                  <b>Endereço:</b> {index?.street}
+                  <b>Endereço:</b> {index?.address?.street}
                 </span>
                 <span>
-                  <b>Número:</b> {index?.addressNumber}
+                  <b>Número:</b> {index?.address?.addressNumber}
                 </span>
                 <span>
-                  <b>Complemento:</b> {index?.complement}
+                  <b>Complemento:</b> {index?.address?.complement}
                 </span>
                 <span>
                   <b>CEP: </b>
-                  {index?.cep}
+                  {index?.address?.cep}
                 </span>
                 <span>
-                  <b>Bairro:</b> {index?.district}
+                  <b>Bairro:</b> {index?.address?.district}
                 </span>
                 <span>
-                  <b>Cidade:</b> {index?.city}
+                  <b>Cidade:</b> {index?.address?.city}
                 </span>
                 <span>
-                  <b>Estado:</b> {index?.state}
+                  <b>Estado:</b> {index?.address?.state}
                 </span>
               </S.ContainerBodyItensAddress>
               <S.ContainerBodyItensButtons>
