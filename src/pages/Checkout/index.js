@@ -14,7 +14,8 @@ export default function Checkout() {
     return JSON.parse(localStorage.getItem("Infos"));
   });
 
-  const result = Object.values(data);
+  const { user } = data;
+  const { address } = data;
 
   async function registerClinic() {
     try {
@@ -57,16 +58,16 @@ export default function Checkout() {
           <h3>Informações financeiras</h3>
           <S.ContainerFormItemRow>
             <label>Nome:</label>
-            <span>{result[0]}</span>
+            <span>{user.name}</span>
           </S.ContainerFormItemRow>
           <S.ContainerFormItemRow>
             <label>CPF:</label>
-            <span>{result[1]}</span>
+            <span>{user.cpf}</span>
           </S.ContainerFormItemRow>
           <S.ContainerFormItemRow>
             <label>Capital Social:</label>
             <span>
-              {result[2].toLocaleString("pt-br", {
+              {user.capital.toLocaleString("pt-br", {
                 style: "currency",
                 currency: "BRL",
               })}
@@ -79,35 +80,35 @@ export default function Checkout() {
           <S.ContainerFormRow>
             <S.ContainerFormItem>
               <label>CEP:</label>
-              <span>{result[3]}</span>
+              <span>{address?.cep}</span>
             </S.ContainerFormItem>
             <S.ContainerFormItem>
               <label>Número:</label>
-              <span>{result[5]}</span>
+              <span>{address?.addressNumber}</span>
             </S.ContainerFormItem>
           </S.ContainerFormRow>
           <S.ContainerFormItemRow>
             <label>Endereço:</label>
-            <span>{result[4]}</span>
+            <span>{address?.street}</span>
           </S.ContainerFormItemRow>
           <S.ContainerFormRow>
             <S.ContainerFormItem>
               <label>Complemento:</label>
-              <span>{result[6]}</span>
+              <span>{address?.complement}</span>
             </S.ContainerFormItem>
             <S.ContainerFormItem>
               <label>Bairro:</label>
-              <span>{result[7]}</span>
+              <span>{address?.district}</span>
             </S.ContainerFormItem>
           </S.ContainerFormRow>
           <S.ContainerFormRow>
             <S.ContainerFormItem>
               <label>Cidade:</label>
-              <span>{result[8]}</span>
+              <span>{address?.city}</span>
             </S.ContainerFormItem>
             <S.ContainerFormItem>
               <label>Estado:</label>
-              <span>{result[9]}</span>
+              <span>{address?.state}</span>
             </S.ContainerFormItem>
           </S.ContainerFormRow>
         </S.ContainerType>
@@ -124,7 +125,6 @@ export default function Checkout() {
           </S.ButtonAdvanced>
         </S.ContainerSubmit>
       </S.ContainerForm>
-      {console.log(result)}
     </S.Container>
   );
 }
