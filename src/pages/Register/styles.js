@@ -16,7 +16,7 @@ export const ContainerHeader = styled.div`
   }
 `;
 
-export const ContainerForm = styled.div`
+export const ContainerForm = styled.form`
   width: 50%;
   padding: 1rem 1.5rem;
   border-radius: 5px;
@@ -26,6 +26,10 @@ export const ContainerForm = styled.div`
     width: 90%;
   }
 
+  p {
+    font-size: 11px;
+    color: red;
+  }
 `;
 
 export const ContainerFormItem = styled.div`
@@ -49,28 +53,29 @@ export const ContainerFormItem = styled.div`
 `;
 
 export const ContainerSubmit = styled.div`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-  button {
-    border: 1px solid #e5e8eb;
-    width: 100%;
-    height: 2.5rem;
-    padding-left: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #3f51b5;
-    color: white;
-    cursor: pointer;
+export const ButtonAdvanced = styled.input`
+  border: 1px solid #e5e8eb;
+  width: 48%;
+  height: 2.5rem;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
 
-    &:hover {
-      background-color: #f9f9f9;
-      color: #3f51b5;
-      border: 1px solid #3f51b5;
-
-      transition: 0.3s;
-      box-shadow: 0px 3px 2px 3px rgba(0, 0, 0, 0.1);
-      transform: scale(1.03);
-    }
+  &:hover {
+    background-color: #f9f9f9;
+    color: #3f51b5;
+    border: 1px solid #3f51b5;
+    transition: 0.3s;
+    box-shadow: 0px 3px 2px 3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
   }
 `;
