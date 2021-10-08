@@ -16,7 +16,7 @@ export const ContainerHeader = styled.div`
   }
 `;
 
-export const ContainerForm = styled.div`
+export const ContainerForm = styled.form`
   width: 50%;
   padding: 1rem 1.5rem;
   background-color: #e9ecef;
@@ -24,6 +24,10 @@ export const ContainerForm = styled.div`
 
   @media (max-width: 768px) {
     width: 90%;
+  }
+  p {
+    font-size: 11px;
+    color: red;
   }
 `;
 
@@ -102,7 +106,7 @@ export const ButtonBack = styled.button`
   }
 `;
 
-export const ButtonAdvanced = styled.button`
+export const ButtonAdvanced = styled.input`
   border: 1px solid #e5e8eb;
   width: 48%;
   height: 2.5rem;
