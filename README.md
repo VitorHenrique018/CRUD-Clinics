@@ -23,7 +23,8 @@ Para a criação desse projeto, foram utilizados:
 - `Styled Components`
 - `Axios`
 - `React Hot Toast`
-- `React Input Mask`
+- `React-hook-form`
+- `Yup`
 
 # Experiência com o projeto
 
@@ -34,7 +35,7 @@ Foi bom fazer esse projeto, onde coloquei em prática alguns dos meus conhecimen
 Como tive pouco tempo para desenvolver essa aplicação, ficaram algumas coisas que gostaria de inserir. Porém, logo menos termino essas tasks. Algumas melhorias são:
 
 - `Usar uma API para retornar o estado e a cidade`
-- `Utilizar uma API para validação do CPF`
-- `Implementar a função de atualização de clínicas`
-- `Acresentar mais seções na página inicial`
-- `Adicionar verificações quando efetuar a exclusão e criação de clínicas`
+- `Utilizar uma API para validação do CPF` - Fiz a validação no campo do CPF
+- `Implementar a função de atualização de clínicas`- Implementado
+- `Acresentar mais seções na página inicial` 
+- `Adicionar verificações quando efetuar a exclusão e criação de clínicas` - Implementado
