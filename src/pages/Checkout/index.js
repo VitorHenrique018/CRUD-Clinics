@@ -19,7 +19,7 @@ export default function Checkout() {
 
   async function registerClinic() {
     try {
-      const resp = await axios.post(
+      await axios.post(
         `https://6157ba858f7ea600179852ad.mockapi.io/api/v1/iclinic`,
         data
       );
@@ -31,7 +31,6 @@ export default function Checkout() {
         }
       );
       setSendValue(true);
-      console.log(resp);
       localStorage.removeItem("Infos");
       setTimeout(function () {
         history.push("/clinics");
