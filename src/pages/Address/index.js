@@ -16,10 +16,10 @@ const schema = yup.object({
     .test("len", "CPF inválido", (val) => val.length === 9)
     .required("O Cep é obrigatório."),
   addressNumber: yup
-    .number("Favor, informar apenas números")
-    .positive("O número não pode ser negativo ou igual à zero.")
-    .required("O número é obrigatório.")
-    .typeError("Inserir apenas números e o campo não pode ser vazio"),
+    .string()
+    .trim()
+    .required("O número do endereço é obrigatório.")
+    .typeError("O campo não pode ser vazio"),
   street: yup.string().trim().required("O endereço é obrigatório."),
   complement: yup.string().trim(),
   district: yup.string().trim().required("O setor é obrigatório."),
