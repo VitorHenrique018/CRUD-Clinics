@@ -21,7 +21,6 @@ export default function Clinics() {
       );
       if (resp.data.length > 0) {
         setDate(resp.data);
-        console.log("Lista Clínicas", resp.data);
       }
     } catch (err) {}
   }
@@ -41,7 +40,6 @@ export default function Clinics() {
           position: "top-center",
         });
       }
-      console.log(resp);
     } catch (err) {}
   }
 
