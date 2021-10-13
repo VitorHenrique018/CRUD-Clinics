@@ -70,7 +70,6 @@ export const ModalUpdate = ({ open, closed, updateData }) => {
   async function postB() {
     try {
       const resp = await axios(`https://viacep.com.br/ws/${cep}/json/`);
-      console.log(resp);
       if (resp?.data?.erro) {
         toast.error("Cep invalido.");
       } else {
@@ -99,7 +98,7 @@ export const ModalUpdate = ({ open, closed, updateData }) => {
     };
 
     try {
-      const resp = await axios.put(
+      await axios.put(
         `https://6157ba858f7ea600179852ad.mockapi.io/api/v1/iclinic/${updateData.id}`,
         newData
       );
@@ -109,7 +108,6 @@ export const ModalUpdate = ({ open, closed, updateData }) => {
           position: "top-center",
         }
       );
-      console.log(resp);
 
       setTimeout(function () {
         history.push("/");
