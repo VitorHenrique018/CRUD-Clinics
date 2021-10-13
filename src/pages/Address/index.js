@@ -57,7 +57,6 @@ export default function Address() {
   async function postB() {
     try {
       const resp = await axios(`https://viacep.com.br/ws/${cep}/json/`);
-      console.log(resp);
       if (resp?.data?.erro) {
         toast.error("Cep invalido.");
       } else {
