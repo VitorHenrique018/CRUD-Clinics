@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Modal from "react-modal";
 import InputMask from "react-input-mask";
 import axios from "axios";
@@ -27,10 +28,10 @@ const schema = yup.object({
     .test("len", "CPF inválido", (val) => val.length === 9)
     .required("O Cep é obrigatório."),
   addressNumber: yup
-    .number("Favor, informar apenas números")
-    .positive("O número não pode ser negativo ou igual à zero.")
-    .required("O número é obrigatório.")
-    .typeError("Inserir apenas números e o campo não pode ser vazio"),
+    .string()
+    .trim()
+    .required("O número do endereço é obrigatório.")
+    .typeError("O campo não pode ser vazio"),
   street: yup.string().trim().required("O endereço é obrigatório."),
   complement: yup.string().trim(),
   district: yup.string().trim().required("O setor é obrigatório."),
@@ -40,15 +41,17 @@ const schema = yup.object({
 
 const customStyles = {
   content: {
-    top: "50%",
+    top: "45%",
     left: "50%",
     right: "25%",
-    bottom: "5%",
+    bottom: "-20%",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
   },
 };
 export const ModalUpdate = ({ open, closed, updateData }) => {
+  const history = useHistory();
+
   const [cep, setCep] = useState("");
 
   const {
@@ -82,24 +85,40 @@ export const ModalUpdate = ({ open, closed, updateData }) => {
   }
 
   async function onSubmit(data) {
+    let newData = {
+      user: { name: data.name, capital: data.capital, cpf: data.cpf },
+      address: {
+        addressNumber: data.addressNumber,
+        cep: data.cep,
+        street: data.street,
+        complement: data.complement,
+        district: data.district,
+        city: data.city,
+        state: data.state,
+      },
+    };
+
     try {
       const resp = await axios.put(
         `https://6157ba858f7ea600179852ad.mockapi.io/api/v1/iclinic/${updateData.id}`,
-        data
+        newData
       );
       toast.success(
-        "Clínica cadastrada com sucesso. Você será redirecionado para a listagem de clínicas",
+        "Dados da clínica alterados com sucesso. Você será redirecionado para a página inicial",
         {
           position: "top-center",
         }
       );
       console.log(resp);
+
+      setTimeout(function () {
+        history.push("/");
+      }, 3000);
     } catch (err) {
-      toast.error("Não foi possivel cadastrar a clínica", {
+      toast.error("Não foi possivel alterar os dados  da clínica", {
         position: "top-center",
       });
     }
-    console.log("Data", data);
   }
 
   return (
@@ -201,7 +220,6 @@ export const ModalUpdate = ({ open, closed, updateData }) => {
           </S.ContainerSubmit>
         </S.ContainerForm>
       </S.Container>
-      {console.log(updateData)}
     </Modal>
   );
 };
